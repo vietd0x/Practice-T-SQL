@@ -3,18 +3,18 @@ go
 use QLSV
 go
 create table Sinhvien(
-	MaSV		int				identity primary key,
+	MaSV		int		identity primary key,
 	TenSV		nvarchar(30)	not null,
-	GT			nvarchar(5)		default N'Nam',
-	Ngaysinh	date			check (Ngaysinh < getdate()),
-	Que			nvarchar(50)	not null,
-	Lop			nvarchar(10),
+	GT		nvarchar(5)	default N'Nam',
+	Ngaysinh	date		check (Ngaysinh < getdate()),
+	Que		nvarchar(50)	not null,
+	Lop		nvarchar(10),
 )
 
 create table Monhoc(
-	MaMH	int				identity primary key,
+	MaMH	int		identity primary key,
 	TenMH	nvarchar(20)	unique,
-	DVHT	int				check (DVHT between 2 and 9),
+	DVHT	int		check (DVHT between 2 and 9),
 )
 
 create table Ketqua(
@@ -78,16 +78,16 @@ go
 use Thu_vien
 go
 create table BANDOC(
-	maBD		varchar(10)	 primary key not null,
-	hotenBD		nvarchar(35) not null,
-	ngaysinh	date		 check(ngaysinh < getdate()),
-	lop			varchar(6)	 not null,
-	quequan		nvarchar(50) not null,
-	sdt			varchar(11)	 not null,
+	maBD		varchar(10)	primary key not null,
+	hotenBD		nvarchar(35) 	not null,
+	ngaysinh	date		check(ngaysinh < getdate()),
+	lop		varchar(6)	not null,
+	quequan		nvarchar(50) 	not null,
+	sdt		varchar(11)	not null,
 )
 
 create table SACH(
-	maS		varchar(10)		primary key,
+	maS	varchar(10)	primary key,
 	TenS	nvarchar(50)	not null,
 	TheLoai	nvarchar(20)	not null,
 	Tacgia	nvarchar(35)	not null,
@@ -97,10 +97,10 @@ create table SACH(
 
 create table PHIEUMUON(
 	MaBD		varchar(10)	not null,
-	MaS			varchar(10)	not null,
+	MaS		varchar(10)	not null,
 	Ngaymuon	date,
 	Ngayhentra	date,
-	TraSach		bit			default 0,
+	TraSach		bit		default 0,
 	constraint CK_max5days check (datediff(day, ngaymuon, ngayhentra) <= 5),-- CAN USE DATEADD()
 	constraint PK primary key (MaBD, MaS),
 )
